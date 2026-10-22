@@ -11,6 +11,6 @@ ui.input_selectize(
 def hist():
     import plotly.express as px
     df = pd.read_excel("PISA_dataset3_mean.xlsx")
-    set.seed(100)
+    random.seed(100)
     df = df.sample(n=5000)
     return px.histogram(df, x=input.var())
