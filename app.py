@@ -8,6 +8,7 @@ ui.input_selectize("var", "Select variable", choices=["score_sci_avg", "score_ma
 def hist():
     import altair as alt
     df = pd.read_excel("PISA_dataset3_mean.xlsx")
+    df = df.sample(n=5000)
     return (
         alt.Chart(df)
         .mark_bar()
