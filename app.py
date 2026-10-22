@@ -1,16 +1,15 @@
 from shiny.express import input, ui
-from shinywidgets import render_altair
+from shinywidgets import render_plotly
 import pandas as pd
 
-ui.input_selectize("var", "Select variable", choices=["score_sci_avg", "score_math_avg", "score_env_avg"])
+ui.input_selectize(
+    "var", "Select variable",
+    choices=["score_sci_avg", "score_math_avg", "score_env_avg"]
+)
 
-@render_altair
+@render_plotly
 def hist():
-    import altair as alt
+    import plotly.express as px
     df = pd.read_excel("PISA_dataset3_mean.xlsx")
     df = df.sample(n=5000)
-    return (
-        alt.Chart(df)
-        .mark_bar()
-        .encode(x=alt.X(f"{input.var()}:Q", bin=True), y="count()")
-    )
+    return px.histogram(df, x=input.var())
