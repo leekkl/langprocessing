@@ -15,5 +15,3 @@ def hist():
         .mark_bar()
         .encode(x=alt.X(f"{input.var()}:Q", bin=True), y="count()")
     )
-
-pip freeze > requirements.txt
