@@ -1,14 +1,14 @@
 from shiny.express import input, ui
 from shinywidgets import render_altair
+import pandas as pd
 
 ui.input_selectize("var", "Select variable", choices=["bill_length_mm", "body_mass_g"])
-
 
 @render_altair
 def hist():
     import altair as alt
     from palmerpenguins import load_penguins
-    df = load_penguins()
+    df = pd.read_excel()
     return (
         alt.Chart(df)
         .mark_bar()
