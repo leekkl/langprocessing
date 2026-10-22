@@ -1,5 +1,6 @@
 from shiny.express import input, ui
 from shinywidgets import render_altair
+import pip
 
 ui.input_selectize("var", "Select variable", choices=["bill_length_mm", "body_mass_g"])
 
@@ -15,4 +16,4 @@ def hist():
         .encode(x=alt.X(f"{input.var()}:Q", bin=True), y="count()")
     )
 
-!pip freeze > requirements.txt
+pip freeze > requirements.txt
